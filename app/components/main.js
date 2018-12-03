@@ -8,11 +8,10 @@ import {
     TouchableOpacity, //touch buttons
 } from 'react-native';
 
-export default class App extends React.Component {
+export default class Main extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-      </View>
+      <View><Text>Testing</Text></View>
     );
   }
 }
