@@ -24,6 +24,10 @@ export default class Main extends React.Component {
             <TextInput style={styles.textInput} placeholder='>note' placeholderTextColor='white' underlineColorAndroid='transparent'>
             </TextInput>
         </View>
+
+        <TouchableOpacity style={styles.addButton}>
+            <Text style={styles.addButtonText}>+</Text>
+        </TouchableOpacity>
       </View>
     );
   }
