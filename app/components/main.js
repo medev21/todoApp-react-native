@@ -8,28 +8,54 @@ import {
     TouchableOpacity, //touch buttons
 } from 'react-native';
 
+import Note from './Note';
+
 export default class Main extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-            <Text style={styles.headerText}>- Noter -</Text>
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            noteArray: [],
+            noteText: ''
+        }
+    }
+
+    addNote() {
+        alert('test');
+    }
+
+    render() {
+
+        let notes = this.state.noteArray.map((val,key) => {
+            return <Note key={key} keyval={key} val={val} deleteMethod={ ()=> this.deleteNote(key) }/>
+        });
+
+        return (
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.headerText}>- Noter -</Text>
+            </View>
+
+            <ScrollView style={styles.scrollContainer}>
+
+            </ScrollView>
+
+            <View style={styles.footer}>
+                <TextInput 
+                    style={styles.textInput} 
+                    onChangeText={(noteText) => this.setState({noteText})}
+                    value={this.state.noteText} 
+                    placeholder='>note' 
+                    placeholderTextColor='white' 
+                    underlineColorAndroid='transparent'>
+                </TextInput>
+            </View>
+
+            <TouchableOpacity onPress={this.addNote.bind(this)} style={styles.addButton}>
+                <Text style={styles.addButtonText}>+</Text>
+            </TouchableOpacity>
         </View>
-
-        <ScrollView style={styles.scrollContainer}>
-
-        </ScrollView>
-
-        <View style={styles.footer}>
-            <TextInput style={styles.textInput} placeholder='>note' placeholderTextColor='white' underlineColorAndroid='transparent'>
-            </TextInput>
-        </View>
-
-        <TouchableOpacity style={styles.addButton}>
-            <Text style={styles.addButtonText}>+</Text>
-        </TouchableOpacity>
-      </View>
-    );
+        );
   }
 }
 
